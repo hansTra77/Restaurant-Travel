@@ -13,7 +13,28 @@
         <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
 
 
+        <script>
 
+            var navbarAnimated = document.querySelector('#navbar-fixed');
+            window.onscroll = function () { myAnimationsNavbar() };
+            function myAnimationsNavbar() {
+
+                if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+                    console.log('entre');
+                    navbarAnimated.classList.remove("subir");
+                    navbarAnimated.classList.add("bajar");
+                } else {
+                    console.log('entre2');
+                    navbarAnimated.classList.remove("bajar");
+                    navbarAnimated.classList.add("subir");
+                }
+            }
+        </script>
+
+
+
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqJZzQVsDo_jlyGqDlNy_EE4_lIQ6fWe8&libraries=places&callback=initMap"></script>
         <script>
             var map;
             var infowindow;
@@ -474,27 +495,6 @@ w3.includeHTML();
 
 
         </script>
-        <script>
-
-            var navbarAnimated = document.querySelector('#navbar-fixed');
-            window.onscroll = function () { myAnimationsNavbar() };
-            function myAnimationsNavbar() {
-
-                if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-                    console.log('entre');
-                    navbarAnimated.classList.remove("subir");
-                    navbarAnimated.classList.add("bajar");
-                } else {
-                    console.log('entre2');
-                    navbarAnimated.classList.remove("bajar");
-                    navbarAnimated.classList.add("subir");
-                }
-            }
-        </script>
-
-
-
-
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqJZzQVsDo_jlyGqDlNy_EE4_lIQ6fWe8&libraries=places&callback=initMap"></script>
+        
     </body>
 </html>
