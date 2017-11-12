@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="../static/css/normalize.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/css/styles.css"> 
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,400,400i,700,700i,800,800i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+
+
+
+        <script>
+            var map;
+            var infowindow;
+
+            function initMap() {
+                var pyrmont = {lat: 3.3646981, lng: -76.5348243};
+
+                map = new google.maps.Map(document.getElementById('googleMap'), {
+                    center: pyrmont,
+                    zoom: 19
+                });
+
+                infowindow = new google.maps.InfoWindow();
+                var service = new google.maps.places.PlacesService(map);
+                service.nearbySearch({
+                    location: pyrmont,
+                    radius: 500,
+                    type: ['restaurant']
+                }, callback);
+            }
+
+            function callback(results, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (var i = 0; i < results.length; i++) {
+                        createMarker(results[i]);
+                    }
+                }
+            }
+
+            function createMarker(place) {
+                var placeLoc = place.geometry.location;
+                var image = {
+                    url: '../static/assets/logo.png',
+                    scaledSize: new google.maps.Size(40, 40),
+                    origin: new google.maps.Point(0,0),
+                    anchor: new google.maps.Point(0, 0)
+                };
+                var marker = new google.maps.Marker({
+                    map: map,
+                    icon: image,
+                    position: place.geometry.location
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.setContent(place.name);
+                    infowindow.open(map, this);
+                });
+            }
+        </script>
+
+
+
+
+    </head>
+    <body>
+
+        <!--<div w3-include-html="header.html"></div>
+<div w3-include-html="footer.html"></div>-->
+
+        <header>
+            <div class="encabezado">
+                <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+                    <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img class="logo img-responsive" src="../static/assets/logo.png"></a>
+                    <div class="navbar-collapse collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item bordes">
+                                <input class="nav-link inpsearch" type="text" placeholder="Encuentra comida para tu viaje">
+                            </li>
+                            <li class="nav-item">
+                                <div class="languages">
+                                    <div class="nav-link redfont thin lanitem">Idioma</div>
+                                    <a class="nav-link redfont thin lanitem hov" href="#">en</a>
+                                    <a class="nav-link redfont thin lanitem hov" href="#">es</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+
+                                <a class="nav-link dropdown-toggle redfont" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../static/assets/hom.JPG" class="avatar img-responsive">
+                                    Antonio Sánchez Soliz
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item hov" href="#">Perfil</a>
+                                    <a class="dropdown-item hov" href="#">Salir</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
+
+
+
+
+
+        <div id="navbar-fixed" class="fixed-header">
+            <div class="encabezado">
+                <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+                    <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img class="logo img-responsive" src="../static/assets/logo.png"></a>
+                    <div class="navbar-collapse collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item bordes">
+                                <input class="nav-link inpsearch" type="text" placeholder="Encuentra comida para tu viaje">
+                            </li>
+                            <li class="nav-item">
+                                <div class="languages">
+                                    <div class="nav-link redfont thin lanitem">Idioma</div>
+                                    <a class="nav-link redfont thin lanitem hov" href="#">en</a>
+                                    <a class="nav-link redfont thin lanitem hov" href="#">es</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+
+                                <a class="nav-link dropdown-toggle redfont" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../static/assets/hom.JPG" class="avatar img-responsive">
+                                    Antonio Sánchez Soliz
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item hov" href="#">Perfil</a>
+                                    <a class="dropdown-item hov" href="#">Salir</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="cuerpo">
+            <div class="options first">
+                <div class="container inlinecont">
+                    <div class="dropdown">
+                        <button class="btn dropdown-red dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Ordenado por
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item hov" href="#">Relevancia</a>
+                            <a class="dropdown-item hov" href="#">Cercania</a>
+                            <a class="dropdown-item hov" href="#">Popularidad</a>
+                            <a class="dropdown-item hov" href="#">Precio ascendente</a>
+                            <a class="dropdown-item hov" href="#">Precio descendente</a>
+                        </div>
+                    </div>
+
+                    <div class="middle">
+                        <span class="badge badge-default italy">Italiano</span>
+                        <span class="badge badge-default vegan">Vegetariano</span>
+                        <span class="badge badge-default vegan">Japones</span>
+                        <span class="badge badge-default vegan">Frances</span>
+                        <span class="badge badge-default vegan">Español</span>
+                        <span class="badge badge-default vegan">...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="container list-filter">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="card border paddings">
+                            <div class="card-block">
+                                <div class="titleline">
+                                    <h4 class="card-title fontgray">Filtros</h4>
+                                </div>
+                                <div class="line">
+                                    <h6 class="fontgray">Precio</h6>
+                                    <div class="row marginbott left0">
+                                        <div class="square active"><span class="lab font12">Todo</span></div>
+                                        <div class="square"><span class="lab font12">$</span></div>
+                                        <div class="square"><span class="lab font12">$$</span></div>
+                                        <div class="square"><span class="lab font12">$$$</span></div>
+                                        <div class="square"><span class="lab font12">$$$$</span></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="fontgray">Puntuación</h6>
+                                    <div class="row marginbott left0">
+                                        <div class="square active"><span class="lab font12">Todo</span></div>
+                                        <div class="square"><span class="lab font12">3+</span></div>
+                                        <div class="square"><span class="lab font12">3.5+</span></div>
+                                        <div class="square"><span class="lab font12">4+</span></div>
+                                        <div class="square"><span class="lab font12">4.5+</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm 7">
+                        <section class="list">
+                            <ol class="itemlist">
+                                <li class="item-rest">
+                                    <article class="item border"><div class="item-intern">
+                                        <div class="item-img img-fluid"><img src="../static/assets/min1.jpg" alt=""></div>
+                                        <div class="item-content">
+                                            <h5 class="fontgray bold">Restaurante 1</h5>
+                                            <span class="text-muted small">Colombiana - Cali - $$</span><br>
+                                            <span class="fontgray">Comida <span class="redfont">  4.4</span></span>
+                                            <p class="fontgray nonito font12 nobottom">Elaboramos nuestros productos de manera artesanal; todo lo hacemos de inicio a fin, nuestros panes, mermeladas, dulces, vinagretas, ensaladas, sandwiches y platos en general.</p>
+                                        </div>
+                                        </div></article>
+                                </li>
+                                <li class="item-rest">
+                                    <article class="item border"><div class="item-intern">
+                                        <div class="item-img img-fluid"><img src="../static/assets/min2.jpg" alt=""></div>
+                                        <div class="item-content">
+                                            <h5 class="fontgray bold">Restaurante 1</h5>
+                                            <span class="text-muted small">Colombiana - Cali - $$</span><br>
+                                            <span class="fontgray">Comida <span class="redfont">  4.4</span></span>
+                                            <p class="fontgray nonito font12 nobottom">Elaboramos nuestros productos de manera artesanal; todo lo hacemos de inicio a fin, nuestros panes, mermeladas, dulces, vinagretas, ensaladas, sandwiches y platos en general.</p>
+                                        </div>
+                                        </div></article>
+                                </li>
+                                <li class="item-rest">
+                                    <article class="item border"><div class="item-intern">
+                                        <div class="item-img img-fluid"><img src="../static/assets/min3.jpg" alt=""></div>
+                                        <div class="item-content">
+                                            <h5 class="fontgray bold">Restaurante 1</h5>
+                                            <span class="text-muted small">Colombiana - Cali - $$</span><br>
+                                            <span class="fontgray">Comida <span class="redfont">  4.4</span></span>
+                                            <p class="fontgray nonito font12 nobottom">Elaboramos nuestros productos de manera artesanal; todo lo hacemos de inicio a fin, nuestros panes, mermeladas, dulces, vinagretas, ensaladas, sandwiches y platos en general.</p>
+                                        </div>
+                                        </div></article>
+                                </li>
+                                <li class="item-rest">
+                                    <article class="item border"><div class="item-intern">
+                                        <div class="item-img img-fluid"><img src="../static/assets/min4.jpg" alt=""></div>
+                                        <div class="item-content">
+                                            <h5 class="fontgray bold">Restaurante 1</h5>
+                                            <span class="text-muted small">Colombiana - Cali - $$</span><br>
+                                            <span class="fontgray">Comida <span class="redfont">  4.4</span></span>
+                                            <p class="fontgray nonito font12 nobottom">Elaboramos nuestros productos de manera artesanal; todo lo hacemos de inicio a fin, nuestros panes, mermeladas, dulces, vinagretas, ensaladas, sandwiches y platos en general.</p>
+                                        </div>
+                                        </div></article>
+                                </li>
+                                <li class="item-rest">
+                                    <article class="item border"><div class="item-intern">
+                                        <div class="item-img img-fluid"><img src="../static/assets/min5.jpg" alt=""></div>
+                                        <div class="item-content">
+                                            <h5 class="fontgray bold">Restaurante 1</h5>
+                                            <span class="text-muted small">Colombiana - Cali - $$</span><br>
+                                            <span class="fontgray">Comida <span class="redfont">  4.4</span></span>
+                                            <p class="fontgray nonito font12 nobottom">Elaboramos nuestros productos de manera artesanal; todo lo hacemos de inicio a fin, nuestros panes, mermeladas, dulces, vinagretas, ensaladas, sandwiches y platos en general.</p>
+                                        </div>
+                                        </div></article>
+                                </li>
+                                <li class="item-rest">
+                                    <article class="item border"><div class="item-intern">
+                                        <div class="item-img img-fluid"><img src="../static/assets/min6.jpg" alt=""></div>
+                                        <div class="item-content">
+                                            <h5 class="fontgray bold">Restaurante 1</h5>
+                                            <span class="text-muted small">Colombiana - Cali - $$</span><br>
+                                            <span class="fontgray">Comida <span class="redfont">  4.4</span></span>
+                                            <p class="fontgray nonito font12 nobottom">Elaboramos nuestros productos de manera artesanal; todo lo hacemos de inicio a fin, nuestros panes, mermeladas, dulces, vinagretas, ensaladas, sandwiches y platos en general.</p>
+                                        </div>
+                                        </div></article>
+                                </li>
+                                <li class="item-rest">
+                                    <article class="item border"><div class="item-intern">
+                                        <div class="item-img img-fluid"><img src="../static/assets/min7.jpg" alt=""></div>
+                                        <div class="item-content">
+                                            <h5 class="fontgray bold">Restaurante 1</h5>
+                                            <span class="text-muted small">Colombiana - Cali - $$</span><br>
+                                            <span class="fontgray">Comida <span class="redfont">  4.4</span></span>
+                                            <p class="fontgray nonito font12 nobottom">Elaboramos nuestros productos de manera artesanal; todo lo hacemos de inicio a fin, nuestros panes, mermeladas, dulces, vinagretas, ensaladas, sandwiches y platos en general.</p>
+                                        </div>
+                                        </div></article>
+                                </li>
+                                <li class="item-rest">
+                                    <article class="item border"><div class="item-intern">
+                                        <div class="item-img img-fluid"><img src="../static/assets/min8.jpg" alt=""></div>
+                                        <div class="item-content">
+                                            <h5 class="fontgray bold">Restaurante 1</h5>
+                                            <span class="text-muted small">Colombiana - Cali - $$</span><br>
+                                            <span class="fontgray">Comida <span class="redfont">  4.4</span></span>
+                                            <p class="fontgray nonito font12 nobottom">Elaboramos nuestros productos de manera artesanal; todo lo hacemos de inicio a fin, nuestros panes, mermeladas, dulces, vinagretas, ensaladas, sandwiches y platos en general.</p>
+                                        </div>
+                                        </div></article>
+                                </li>
+                                <li class="item-rest">
+                                    <article class="item border"><div class="item-intern">
+                                        <div class="item-img img-fluid"><img src="../static/assets/min9.jpg" alt=""></div>
+                                        <div class="item-content">
+                                            <h5 class="fontgray bold">Restaurante 1</h5>
+                                            <span class="text-muted small">Colombiana - Cali - $$</span><br>
+                                            <span class="fontgray">Comida <span class="redfont">  4.4</span></span>
+                                            <p class="fontgray nonito font12 nobottom">Elaboramos nuestros productos de manera artesanal; todo lo hacemos de inicio a fin, nuestros panes, mermeladas, dulces, vinagretas, ensaladas, sandwiches y platos en general.</p>
+                                        </div>
+                                        </div></article>
+                                </li>
+                                <li class="item-rest">
+                                    <article class="item border"><div class="item-intern">
+                                        <div class="item-img img-fluid"><img src="../static/assets/min10.jpg" alt=""></div>
+                                        <div class="item-content">
+                                            <h5 class="fontgray bold">Restaurante 1</h5>
+                                            <span class="text-muted small">Colombiana - Cali - $$</span><br>
+                                            <span class="fontgray">Comida <span class="redfont">  4.4</span></span>
+                                            <p class="fontgray nonito font12 nobottom">Elaboramos nuestros productos de manera artesanal; todo lo hacemos de inicio a fin, nuestros panes, mermeladas, dulces, vinagretas, ensaladas, sandwiches y platos en general.</p>
+                                        </div>
+                                        </div></article>
+                                </li>
+                                <li class="item-rest">
+                                    <article class="item border"><div class="item-intern">
+                                        <div class="item-img img-fluid"><img src="../static/assets/min11.jpg" alt=""></div>
+                                        <div class="item-content">
+                                            <h5 class="fontgray bold">Restaurante 1</h5>
+                                            <span class="text-muted small">Colombiana - Cali - $$</span><br>
+                                            <span class="fontgray">Comida <span class="redfont">  4.4</span></span>
+                                            <p class="fontgray nonito font12 nobottom">Elaboramos nuestros productos de manera artesanal; todo lo hacemos de inicio a fin, nuestros panes, mermeladas, dulces, vinagretas, ensaladas, sandwiches y platos en general.</p>
+                                        </div>
+                                        </div></article>
+                                </li>
+                            </ol>
+                        </section>
+
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item li-nospace">
+                                    <a class="page-link redius0" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item li-nospace"><a class="page-link redius0" href="#">1</a></li>
+                                <li class="page-item li-nospace"><a class="page-link redius0" href="#">2</a></li>
+                                <li class="page-item li-nospace"><a class="page-link redius0" href="#">3</a></li>
+                                <li class="page-item li-nospace">
+                                    <a class="page-link redius0" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="googleMap"></div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <footer class="text-muted foot">
+            <div class="container">
+                <div class="row">
+                    <div class="footcity col-sm-3">
+                        <div class="row">
+                            Mapa del sitio
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <a href="" class="row footitem font13">Sobre nosotros</a>
+                                <a href="" class="row footitem font13">Dueños de negocios</a>
+                                <a href="" class="row footitem font13">Términos y privacidad</a>
+                                <a href="" class="row footitem font13">Ayuda</a>
+                                <a href="" class="row footitem font13">Todos los restaurantes</a>
+                                <a href="" class="row footitem font13">Contáctenos</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="footcity col-sm-9 cities">
+                        <div class="row cit">
+                            Ciudades más buscadas
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <a href="" class="row footitem font13">New Orleans, Louisiana, USA</a>
+                                <a href="" class="row footitem font13">Tokyo, Japon</a>
+                                <a href="" class="row footitem font13">Lyon, Francia</a>
+                                <a href="" class="row footitem font13">San Sebastián, España</a>
+                                <a href="" class="row footitem font13">Marrakesh, Maruecos</a>
+                                <a href="" class="row footitem font13">Louisville, Kentucky, USA</a>
+                            </div>
+                            <div class="col-sm">
+                                <a href="" class="row footitem font13">Georgetown, Malasia</a>
+                                <a href="" class="row footitem font13">Florence, Italia</a>
+                                <a href="" class="row footitem font13">London, UK</a>
+                                <a href="" class="row footitem font13">Santiago, Chile</a>
+                                <a href="" class="row footitem font13">Copenhagen, Dinamarca</a>
+                                <a href="" class="row footitem font13">San Diego, California, USA</a>
+                            </div>
+                            <div class="col-sm">
+                                <a href="" class="row footitem font13">Ho Chi Minh City, Vietnam</a>
+                                <a href="" class="row footitem font13">Buenos Aires, Argentina</a>
+                                <a href="" class="row footitem font13">Vancouver, British Columbia, Canada</a>
+                                <a href="" class="row footitem font13">Bologna, Italia</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="row darkgray">
+                    <div class="col-sm boot">
+                        <spam class="name">RESTAURANT TRAVEL</spam>
+                    </div>
+                    <div class="col-sm boot">
+                        <spam class="copy">© 2017 All Rights Reserved. RESTAURANT TRAVEL</spam>
+                    </div>
+                    <div class="col-sm boot"><img class="redes img-fluid" src="../static/assets/redes.png"</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <!--<script src="../static/js/w3.js"></script>
+<script>
+w3.includeHTML();
+</script>-->
+        <script>
+            (function($) {
+                "use strict";
+                // manual carousel controls
+                $('.next').click(function(){ $('#postsCarousel').carousel('next');return false; });
+                $('.prev').click(function(){ $('#postsCarousel').carousel('prev');return false; });
+                $('.italy').click(function(){ $('#postsCarousel').carousel(0);return false; });
+                $('.vegan').click(function(){ $('#postsCarousel').carousel(1);return false; });
+            })(jQuery);
+            $('#postsCarousel').carousel({
+                interval: false
+            });
+
+
+        </script>
+        <script>
+
+            var navbarAnimated = document.querySelector('#navbar-fixed');
+            window.onscroll = function () { myAnimationsNavbar() };
+            function myAnimationsNavbar() {
+
+                if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+                    console.log('entre');
+                    navbarAnimated.classList.remove("subir");
+                    navbarAnimated.classList.add("bajar");
+                } else {
+                    console.log('entre2');
+                    navbarAnimated.classList.remove("bajar");
+                    navbarAnimated.classList.add("subir");
+                }
+            }
+        </script>
+
+
+
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqJZzQVsDo_jlyGqDlNy_EE4_lIQ6fWe8&libraries=places&callback=initMap"></script>
+    </body>
+</html>
