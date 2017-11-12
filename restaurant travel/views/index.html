@@ -11,6 +11,27 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,400,400i,700,700i,800,800i" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+        
+        <script>
+            
+            var navbarAnimated = document.querySelector('#navbar-fixed');
+            window.onscroll = function () { myAnimationsNavbar() };
+            function myAnimationsNavbar() {
+                
+                if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+                    console.log('entre');
+                    navbarAnimated.classList.remove("subir");
+                    navbarAnimated.classList.add("bajar");
+                } else {
+                    console.log('entre2');
+                    navbarAnimated.classList.remove("bajar");
+                    navbarAnimated.classList.add("subir");
+                }
+            }
+        </script>
+        
+        
+        
     </head>
     <body>
 
@@ -483,22 +504,6 @@
                 interval: false
             }); 
         </script>
-        <script>
-            
-            var navbarAnimated = document.querySelector('#navbar-fixed');
-            window.onscroll = function () { myAnimationsNavbar() };
-            function myAnimationsNavbar() {
-                
-                if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-                    console.log('entre');
-                    navbarAnimated.classList.remove("subir");
-                    navbarAnimated.classList.add("bajar");
-                } else {
-                    console.log('entre2');
-                    navbarAnimated.classList.remove("bajar");
-                    navbarAnimated.classList.add("subir");
-                }
-            }
-        </script>
+        
     </body>
 </html>
