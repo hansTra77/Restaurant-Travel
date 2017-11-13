@@ -58,6 +58,9 @@ ol{
 .width25{
     width: 25%;
 }
+.width230{
+    width: 230px;
+}
 .margin70{
     margin-top: 70px;
 }
@@ -293,6 +296,7 @@ li{
 .transp{
     background-color: rgba(255, 255, 255, 0.8);
     max-width: 300px;
+    min-width: 200px;
     left: 0;
     padding-top: 1em;
 }
@@ -560,6 +564,7 @@ li{
     padding-right: 0;
     padding-left: 0;
     margin-bottom: 1em;
+    overflow: hidden;
 }
 .item{
     cursor: pointer;
@@ -701,5 +706,167 @@ li{
     .cities{
         visibility: hidden;
         display: none;
+    }
+}
+@media (min-width: 991px) and (max-width: 1199px){
+    .item-img {
+        width: 328px;
+        height: 200px;
+        overflow: hidden;
+    }
+}
+@media (max-width: 1130px){
+    .row-gray{
+        flex-direction: column;
+    }
+    .col-sm-4 {
+        max-width: 100%;
+    }
+    .col-sm-8 {
+        max-width: 100%;
+    }
+    .bottom4 {
+        margin-bottom: 2em;
+    }
+}
+@media (max-width: 1200px){
+    .white {
+        background-color: #FFF;
+        padding: 10px 10px;
+        visibility: hidden;
+        display: none;
+    }
+}
+@media (min-width: 881px) and (max-width: 1010px){
+    .absolute{
+        position: absolute;
+        top: 140%;
+        display: flex; 
+        justify-content: space-between;
+    }
+    .white {
+        background-color: #FFF;
+        padding: 10px 10px;
+        visibility: hidden;
+        display: none;
+    }
+}
+@media (min-width: 817px) and (max-width: 880px){
+    .absolute{
+        position: absolute;
+        top: 120%;
+        display: flex; 
+        justify-content: space-between;
+    }
+    .white {
+        background-color: #FFF;
+        padding: 10px 10px;
+        visibility: hidden;
+        display: none;
+    }
+}
+@media (min-width: 651px) and (max-width: 816px){
+    .absolute{
+        position: absolute;
+        top: 105%;
+        display: flex; 
+        justify-content: space-between;
+    }
+    .transp {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    .cardabsol {
+        display: none;
+        visibility: hidden;
+    }
+    .white {
+        background-color: #FFF;
+        padding: 10px 10px;
+        visibility: hidden;
+        display: none;
+    }
+}
+@media (max-width: 650px){
+    .absolute{
+        position: static;
+        margin-top: -130px;
+    }
+    .cardabsol {
+        display: none;
+        visibility: hidden;
+    }
+    .transp {
+        background-color: rgba(255, 255, 255, 0.8);
+        max-width: 100%;
+        min-width: 100%;
+    }
+    .width70r{
+        width: 100%;
+    }
+    .rowr{
+        margin-right: 0;
+        margin-left: 0; 
+    }
+    .white {
+        background-color: #FFF;
+        padding: 10px 10px;
+        visibility: hidden;
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+@media (max-width: 320px) {
+    body{
+        font-size: 12px;
+    }
+    .font13{
+        font-size: 0.8em;
+    }
+    .font12{
+        font-size: 0.8em;
+    }
+    p{
+        font-size: 0.9em; 
+    }
+    h2{
+        font-size: 1.3rem;
+    }
+
+}
+@media (min-width: 321px) and (max-width: 480px){
+    body{
+        font-size: 13px;
+    }
+    .font13{
+        font-size: 0.8em;
+    }
+    .font12{
+        font-size: 0.8em;
+    }
+    p{
+        font-size: 0.9em; 
+    }
+    h2{
+        font-size: 1.5rem;
+    }
+
+}
+@media (min-width: 481px) and(max-width: 720px){
+    h2{
+        font-size: 1.7rem;
+    }
+
+}
+@media (min-width: 721px) and (max-width: 768px){
+    h2{
+        font-size: 1.8rem;
     }
 }
