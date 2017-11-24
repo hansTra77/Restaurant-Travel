@@ -2,7 +2,8 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title>Document</title>
+        <title>Home</title>
+        <link rel="icon" href="../static/assets/logo.png">
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../static/css/normalize.css">
@@ -28,8 +29,8 @@
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item bordes">
                                 <a href="search.html">
-                                   <input class="nav-link inpsearch" type="text" placeholder="Encuentra comida para tu viaje">
-                               </a>
+                                    <input class="nav-link inpsearch" type="text" placeholder="Encuentra comida para tu viaje">
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <div class="languages">
@@ -68,10 +69,10 @@
                     <div class="navbar-collapse collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item bordes">
-                               <a href="search.html">
-                                   <input class="nav-link inpsearch" type="text" placeholder="Encuentra comida para tu viaje">
-                               </a>
-                                
+                                <a href="search.html">
+                                    <input class="nav-link inpsearch" type="text" placeholder="Encuentra comida para tu viaje">
+                                </a>
+
                             </li>
                             <li class="nav-item">
                                 <div class="languages">
@@ -93,13 +94,13 @@
                 </nav>
             </div>
         </div>
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
 
         <div class="cuerpo">
 
@@ -161,10 +162,10 @@
 
 
             <img class="img-fluid imgback" src="../static/assets/desayunoimg.jpg" alt="">
-            
+
             <div class="white italic img-text"><p class="nobottom"><strong>Restaurante Plasma</strong>,huevos benedicto</p><p class="nobottom">Medellin, Colombia</p></div>
-            
-            
+
+
             <div class="container width70 nobottompadd">
 
                 <div class="container width70 absolute row">
@@ -401,9 +402,9 @@
                 </a>
             </div>
         </div>
-        
-        
-        
+
+
+
         <footer class="text-muted foot">
             <div class="container">
                 <div class="row">
@@ -464,7 +465,16 @@
                     <div class="col-sm boot">
                         <spam class="copy">© 2017 All Rights Reserved. RESTAURANT TRAVEL</spam>
                     </div>
-                    <div class="col-sm boot"><img class="redes img-fluid" src="../static/assets/redes.png"</div>
+                    <div class="col-sm boot">
+                        <div class="col-sm boot">
+                            <div class="row">
+                                <div class="col norig"><img src="../static/assets/Sin%20t%C3%ADtulo-1-20.png" alt="" class="redes img-fluid"></div>
+                                <div class="col norig"><img src="../static/assets/Sin%20t%C3%ADtulo-1-21.png" alt="" class="redes img-fluid"></div>
+                                <div class="col norig"><img src="../static/assets/Sin%20t%C3%ADtulo-1-22.png" alt="" class="redes img-fluid"></div>
+                                <div class="col norig"><img src="../static/assets/Sin%20t%C3%ADtulo-1-23.png" alt="" class="redes img-fluid"></div>
+                                <div class="col norig"><img src="../static/assets/Sin%20t%C3%ADtulo-1-24.png" alt="" class="redes img-fluid"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -494,11 +504,11 @@ w3.includeHTML();
             }); 
         </script>
         <script>
-            
+
             var navbarAnimated = document.querySelector('#navbar-fixed');
             window.onscroll = function () { myAnimationsNavbar() };
             function myAnimationsNavbar() {
-                
+
                 if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
                     console.log('entre');
                     navbarAnimated.classList.remove("subir");
@@ -510,14 +520,14 @@ w3.includeHTML();
                 }
             }
         </script>
-        
+
         <script>
             $(document).ready(function(){$(".selector-badge").click(function(){$(this).addClass('active-badge');$('.selector-badge').not(this).each(function(){$(this).removeClass('active-badge');});});});
         </script>
         <script>
             $(document).ready(function(){$(".select-food").click(function(){$(this).addClass('active-select-food');$('.select-food').not(this).each(function(){$(this).removeClass('active-select-food');});});});
         </script>
-        
-        
+
+
     </body>
 </html>
